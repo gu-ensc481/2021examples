@@ -13,3 +13,7 @@ deps/deps.jl
 
 ## Jupyter
 .ipynb_checkpoints/
+
+## Compiled programs
+*.exe
+*.o
