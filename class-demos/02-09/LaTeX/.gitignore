@@ -1,0 +1,30 @@
+## Have git ignore these files
+
+## LaTeX files
+*.pdf
+auto/
+*.synctex.gz
+*.bak
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.spl
+*.dvi
+*.lof
+*.lop
+*.lot
+*.toc
+*.idx
+*.ilg
+*.ind
+*.tdo
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.bib.sav
+*.xdv
+*-cache.yaml
+*.synctex(busy)
