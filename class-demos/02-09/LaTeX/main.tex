@@ -1,14 +1,18 @@
 % !TEX program = xelatex
 
-\documentclass[letterpaper,10pt,twoside]{report}
+\documentclass[letterpaper,10pt,twoside]{article}
 \usepackage{amsmath, amssymb, amsfonts, amsthm, bm, tensor}
 \usepackage{mathtools, mathrsfs}
 \usepackage{graphicx, fancyhdr}
 \usepackage{xcolor, listings, hyperref, lastpage, doi, url}
 \usepackage[left=1.in, right=1.in, top=1.5in, bottom=1.in, headheight=42pt]{geometry}
 \usepackage{booktabs, siunitx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup the bibliography package
 \usepackage[style=authoryear, backend=biber, natbib=true]{biblatex}
 \setlength\bibitemsep{1.5\itemsep}
+\addbibresource{refs.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setup the header and the footer
@@ -68,14 +72,53 @@ commentstyle=\color{matcolor_comment}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stuff for the title block
+\title{Example of using \LaTeX}
+\date{9 Feb 2021}
+\author{T. Fitzgerald}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start the document
 \begin{document}
 
-\chapter{Chapter title}
+% Print the title
+\maketitle
+
+% Print the table of contents
+\tableofcontents
 
 %--------------------------------------------------------------
 \section{Section title}
-Welcome to \LaTeX!
+Welcome to wild and wonder world of \LaTeX , where the syntax is made-up and points don't matter.
+I've put each new sentence on its own line in the original file, as this helps with using version--control systems, like git.
+However, in the compiled document all these sentences show up as a single paragraph.
+
+To get a new paragraph, I need to add an extra blank line like this.
+Once we get over the simple parts, writing up something in \LaTeX\ is actually fun.
+Using a good editor\footnote{I'm using \href{https://code.visualstudio.com/}{VS Code} locally with the \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop} Extension.  On Windows I like to install and manage \LaTeX\ using \href{https://miktex.org/}{MikTeX}.} %
+helps to smooth over the bumps.
+I think the best parts of using \LaTeX\ over other document preparation systems are
+\begin{enumerate}
+  \item It's structured.  
+  We can make sections, subsection, subsubsections, chapters and parts (if we're in the right documentclass) and it will automatically keep all the internal booking for us.
+  
+  \item Math looks great.  
+  Once we get over the syntax of writing math, it's hard to use anything else.\footnote{Perhaps this is just because I'm snooty.}  
+  In all seriousness, when the math is clear and consistent it is not distracting.
+  
+  \item Figures can be pdfs and therefore can be vector graphics.  
+  We make a use lots of line graphics, so the ability to make figures that aren't blurry is very powerful.
+
+  \item Citations are easy.  
+  I make a bibliography file using \href{https://www.jabref.org/}{JabRef}, and then I just need to add a \texttt{citet} or \texttt{citep} in my text and I'm done.
+  \begin{itemize}
+    \item A direct reference: For example, \citet{Akhtaruzzaman2010} show several examples of controlling the rotary inverted pendulum.
+    The classical treatise \citet{Goldberg1991} on floating--point arithmetic
+
+    \item A parenthetical cite: Dense eigenvalue computations can be very robust \citep{Golub2012}.
+  \end{itemize}
+\end{enumerate}
 
 %--------------------------------------------------------------
 \subsection{Math}
@@ -130,11 +173,11 @@ It also shows building a table using the \texttt{tabular} package.
 Some more topics to look into include
 \begin{itemize}
     
-    \item Making \href{https://en.wikibooks.org/wiki/LaTeX/Tables}{tables}.
+    \item Making \href{https://en.wikibooks.org/wiki/LaTeX/Tables}{tables} can be a little tricky at first.
 
     \item Managing citations and a bibliography\footnote{This is a nice article \url{https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex}}
     
-    \item Working with more math
+    \item Working with more types of math can get involved.\footnote{Overleaf is good here, but here is another point of reference \url{https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics}}
 
 \end{itemize}
 
@@ -143,6 +186,14 @@ Some more topics to look into include
 \section{Code Example}
 \label{sec:code}
 
+Below I'm using the \href{https://ctan.org/pkg/listings?lang=en}{\texttt{listings}} package to insert the Matlab code that generated Figure \ref{fig:func1}.
+I've modified the Matlab language definition in the header of this file to make the colors, font, and line numbering the way I prefer it.
+
 \lstinputlisting[language=Matlab]{make_figure.m}
+
+
+%--------------------------------------------------------------
+% Insert the bibliography
+\printbibliography
 
 \end{document}
