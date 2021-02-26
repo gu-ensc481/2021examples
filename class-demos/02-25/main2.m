@@ -11,6 +11,7 @@ A = [1,0,2;
     0, -1,2];
 B = [-1; 2; 0];
 C = [1,0,0];
+D = 0;
 
 %%
 % Let's assume we want the system to have a 2nd order response with a set
@@ -33,4 +34,17 @@ sxO = 5*sx
 
 L = controllerDesign(A', C', sxO )';
 
+%%
+x0 = [-1; 0; 1];
 
+% xhat0 = [0;0;0];
+xhat0 = x0+0.01;
+
+w0 = [x0; xhat0];
+tspan = [0,1.5];
+r = @(t) 0;
+
+sol = ode45(@(t,w) syswobs(t,w,A, B, C, D, K, L, r), tspan, w0);
+
+%%
+plot( sol.x, sol.y)
