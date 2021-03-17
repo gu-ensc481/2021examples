@@ -38,5 +38,5 @@ function gaussSeidel(nx,ny, tol, maxIter, T0)
 end
 
 ##
-T, iter = gaussSeidel(nx,ny,tol, maxIter, T0)
+# T, iter = gaussSeidel(nx,ny,tol, maxIter, T0)
 

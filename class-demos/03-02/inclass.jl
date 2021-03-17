@@ -19,7 +19,6 @@ T0[:,end] .= T_north
 T0[1,:]   .= T_west
 
 ##
-
 tol = 1e-6
 maxIter = 1000
 
@@ -43,7 +42,7 @@ function jacobi(nx,ny, tol, maxIter, T0)
             end
         end
         T = copy(Tnew)
-
+        # T = Tnew % if using Matlab
 
         for i = 2:nx-1
             for j = 2:ny-1
