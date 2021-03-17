@@ -18,9 +18,11 @@ J = @(x) [ 1/2*x(1), 2*x(2);
 %%
 figure
 
-fplot( @(x) sqrt(1-x^2/4),[-2,2], 'LineWidth', 2)
+fplot( @(x) sqrt(1-x.^2/4),[-2,2], 'LineWidth', 2)
+xlabel('x')
+ylabel('y')
 hold on
-fplot( @(x) -sqrt(1-x^2/4),[-2,2], 'LineWidth', 2)
+fplot( @(x) -sqrt(1-x.^2/4),[-2,2], 'LineWidth', 2)
 
 fplot( @(x) polyval(p,x), [-2,2], 'LineWidth', 2)
 
@@ -63,10 +65,14 @@ fplot( @(x) polyval(p,x), [-2,2], 'LineWidth', 2)
 
 %%
 
-x1 = [0.1;1.1];
-x1 = NewtonsMethod(f,J,x1)
+x = [0.1;1.1];
+[x,iter] = NewtonsMethod(f,J,x)
+plot(x(1), x(2), 'ko', ...
+    'MarkerSize', 10, 'MarkerFaceColor', 'cyan')
 
 %%
-x2 = [ 1.2; -0.7];
-[x2,i] = NewtonsMethod(f,J,x2)
+x = [ 1.2; -0.7];
+[x,iter] = NewtonsMethod(f,J,x)
+plot(x(1), x(2), 'ko', ...
+    'MarkerSize', 10, 'MarkerFaceColor', 'cyan')
 
