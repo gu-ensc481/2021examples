@@ -116,8 +116,8 @@ function dz = odesys(t,z,g)
     xd = z(3);
     yd = z(4);
     
-    xdd = g*x*y/(x^2 + y^2) - x*xd^2/(x^2 + y^2) - x*yd^2/(x^2 + y^2);
-    ydd = -g*x^2/(x^2 + y^2) - y*xd^2/(x^2 + y^2) - y*yd^2/(x^2 + y^2);
+    xdd = (g*y - xd^2 - yd^2)*x./(x^2 + y^2);
+    ydd = -(g*x^2 + y*xd^2 + y*yd^2)./(x^2 + y^2);
     
     dz = [xd; yd; xdd; ydd];
 
