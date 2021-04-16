@@ -31,9 +31,14 @@ function sysode!(dz, z, p, t)
     An = A(q)
     bn = b(q,qd)
 
-    qddot = a + Ms\(  (A*inv(Ms))\( b - A*a)  )
+    qddot = a + Ms\(  (An*inv(Ms))\( bn - An*a)  )
 
     dz[1:n] .= qd
     dz[n+1:2*n] .= qddot
 
 end
+
+## check to make sure that the syntax is working
+zd = zeros(4,1)
+sysode!(zd, [1,2,3,4], p, 0)
+
