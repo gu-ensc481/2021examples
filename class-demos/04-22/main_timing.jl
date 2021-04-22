@@ -19,7 +19,7 @@ function soln_err(x,t)
 end
 
 function costtime(bmark)
-    return median(bmark.times)*1e-6 #[ms]
+    return median(bmark.times)*1e-9 #[s]
 end
 
 function compute_results(ODE_METHOD, h_range, f, tf, x0)
@@ -45,8 +45,8 @@ err, ctime = compute_results(AM3.am3, h_range, f, tf, x0)
 plt = plot( err, ctime, marker=:square, label="AM3",
      xscale=:log10, yscale=:log10,
     xlabel="Norm of error |x - x_true|_2",
-    ylabel="Median Wall Time [ms]",
-    legend=:bottomright)
+    ylabel="Median Wall Time [s]",
+    legend=:bottomleft)
 
 ## Add AB2
 include("AB2.jl")
@@ -70,3 +70,4 @@ plot!(plt, err, ctime, marker=:dtriangle, label="RK-2")
 
 ## Save the figure
 savefig(plt, "relative_timing.pdf")
+savefig(plt, "relative_timing.svg")
