@@ -4,7 +4,7 @@ using LinearAlgebra
 
 export am3
 
-function am3(f, tf, h, x0; tol = 1e-4, iterMax = 200 )
+function am3(f, tf, h, x0; tol = 1e-8, iterMax = 200 )
         time = 0:h:tf
         n = length(time)
         p = length(x0)

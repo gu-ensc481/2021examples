@@ -4,7 +4,7 @@ using LinearAlgebra
 
 export beuler
 
-function beuler(f, tf, h, x0; tol = 1e-4, iterMax = 200 )
+function beuler(f, tf, h, x0; tol = 1e-8, iterMax = 200 )
 
     # x(i+1) = x(i) + h*f(i+1)
 
