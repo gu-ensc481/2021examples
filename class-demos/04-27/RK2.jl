@@ -5,13 +5,13 @@ using LinearAlgebra
 
 function rk2_step(f, tn, h, xn; alpha = 2/3)
 
-    c1 = alpha
+    c2 = alpha
     a21 = alpha
     b1 = 1 - 1/2/alpha
     b2 = 1/2/alpha
 
     k1 = f(xn, tn)
-    k2 = f(xn + h*a21*k1, tn + h*c1 )
+    k2 = f(xn + h*a21*k1, tn + h*c2 )
 
     xn_p1 = xn + h*(b1*k1 + b2*k2)
 

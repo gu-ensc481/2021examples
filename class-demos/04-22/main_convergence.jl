@@ -87,3 +87,6 @@ for h in h_range
     push!(errRK2, err(x,t) )
 end
 plot!(plt2, h_range, errRK2, marker=:dtriangle, label="RK-2")
+
+## Save the figure
+savefig(plt2, "relative_convergence.pdf")
